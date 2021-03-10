@@ -219,7 +219,7 @@ void getSHOTLocalRF(vtkPolyData *cloud, vtkIdList *NNpoints, double radius, int 
 	{
 
 		
-		if(NNpoints->GetId(ne) != index) { // perchè il KdTree restituisce anche il punto origine
+		if(NNpoints->GetId(ne) != index) { // perchÃ¨ il KdTree restituisce anche il punto origine
 
 			currPoint = cloud->GetPoint(NNpoints->GetId(ne));
 
@@ -627,11 +627,11 @@ void SHOTDescriptor::interpolateSingleChannel(vtkPolyData* cloud, vtkIdList* NNp
 
 
 		// To avoid numerical problems afterwards
-		if (std::abs(yInFeatRef) < 1E-30)
+		if (std::abs(yInFeatRef) < 1E-15)
 			yInFeatRef  = 0;
-		if (std::abs(xInFeatRef) < 1E-30)
+		if (std::abs(xInFeatRef) < 1E-15)
 			xInFeatRef  = 0;
-		if (std::abs(zInFeatRef) < 1E-30)
+		if (std::abs(zInFeatRef) < 1E-15)
 			zInFeatRef  = 0;
 
 
@@ -702,7 +702,7 @@ void SHOTDescriptor::interpolateSingleChannel(vtkPolyData* cloud, vtkIdList* NNp
 
 		assert(inclination >= 0.0 && inclination <= DEG_180_TO_RAD);
 
-		if( inclination > DEG_90_TO_RAD || (std::abs(inclination - DEG_90_TO_RAD) < 1e-30 && zInFeatRef <= 0)){
+		if( inclination > DEG_90_TO_RAD || (std::abs(inclination - DEG_90_TO_RAD) < 1e-15 && zInFeatRef <= 0)){
 
 			double inclinationDistance = (inclination - DEG_135_TO_RAD) / DEG_90_TO_RAD;
 			if(inclination > DEG_135_TO_RAD)
@@ -785,11 +785,11 @@ void SHOTDescriptor::interpolateDoubleChannel(vtkPolyData* cloud, vtkIdList* NNp
 		double zInFeatRef = (delta[0] * rf[6] + delta[1] * rf[7] + delta[2] * rf[8]);
 
 		// To avoid numerical problems afterwards
-		if (std::abs(yInFeatRef) < 1E-30)
+		if (std::abs(yInFeatRef) < 1E-15)
 			yInFeatRef  = 0;
-		if (std::abs(xInFeatRef) < 1E-30)
+		if (std::abs(xInFeatRef) < 1E-15)
 			xInFeatRef  = 0;
-		if (std::abs(zInFeatRef) < 1E-30)
+		if (std::abs(zInFeatRef) < 1E-15)
 			zInFeatRef  = 0;
 
 
@@ -881,7 +881,7 @@ void SHOTDescriptor::interpolateDoubleChannel(vtkPolyData* cloud, vtkIdList* NNp
 
 		assert(inclination >= 0.0 && inclination <= DEG_180_TO_RAD);
 
-		if( inclination > DEG_90_TO_RAD || (std::abs(inclination - DEG_90_TO_RAD) < 1e-30 && zInFeatRef <= 0)){
+		if( inclination > DEG_90_TO_RAD || (std::abs(inclination - DEG_90_TO_RAD) < 1e-15 && zInFeatRef <= 0)){
 
 			double inclinationDistance = (inclination - DEG_135_TO_RAD) / DEG_90_TO_RAD;
 			if(inclination > DEG_135_TO_RAD)
